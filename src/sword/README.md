@@ -9,74 +9,139 @@ Below we have the books sequence:
 ### Old Testament
 
 1º: [Genesis](genesis.h)
+
 2º: [Exodus](exodus.h)
+
+
 3º: [Leviticus](leviticus.h)
+
 4º: [Numbers](numbers.h)
+
 5º: [Deuteronomy](deuteronomy.h)
+
 6º: [Joshua](joshua.h)
+
 7º: [Judges](judges.h)
+
 8º: [Ruth](ruth.h)
+
 9º: [1 Samuel](1samuel.h)
+
 10º: [2 Samuel](2samuel.h)
+
 11º: [1 Kings](1kings.h)
+
 12º: [2 Kings](2kings.h)
+
 13º: [1 Chronicles](1chronicles.h)
+
 14º: [2 Chronicles](2chronicles.h)
+
 15º: [Ezra](ezra.h)
+
 16º: [Nehemiah](nehemiah.h)
+
 17º: [Esther](esther.h)
+
 18º: [Job](job.h)
+
 19º: [Psalms](psalms.h)
+
 20º: [Proverbs](proverbs.h)
+
 21º: [Ecclesiastes](ecclesiastes.h)
+
 22º: [Song of Solomon](songofsolomon.h)
+
 23º: [Isaiah](isaiah.h)
+
 24º: [Jeremiah](jeremiah.h)
+
 25º: [Lamentations](lamentations.h)
+
 26º: [Ezekiel](ezekiel.h)
+
 27º: [Daniel](daniel.h)
+
 28º: [Hosea](hosea.h)
+
 29º: [Joel](joel.h)
+
 30º: [Amos](amos.h)
+
 31º: [Obadiah](obadiah.h)
+
 32º: [Jonah](jonah.h)
+
 33º: [Micah](micah.h)
+
 34º: [Nahum](nahum.h)
+
 35º: [Habakkuk](habakkuk.h)
+
 36º: [Zephaniah](zephaniah.h)
+
 37º: [Haggai](haggai.h)
+
 38º: [Zechariah](zechariah.h)
+
 39º: [Malachi](malachi.h)
 
 
 ### New Testament
 
 40º: [Matthew](matthew.h)
+
 41º: [Mark](mark.h)
+
 42º: [Luke](luke.h)
+
 43º: [John](john.h)
+
 44º: [Acts](acts.h)
+
 45º: [Romans](romans.h)
+
 46º: [1 Corinthians](1corinthians.h)
+
 47º: [2 Corinthians](2corinthians.h)
+
 48º: [Galatians](galatians.h)
+
 49º: [Ephesians](ephesians.h)
+
 50º: [Philippians](philippians.h)
+
 51º: [Colossians](colossians.h)
+
 52º: [1 Thessalonians](1thessalonians.h)
+
 53º: [2 Thessalonians](2thessalonians.h)
+
 54º: [1 Timothy](1timothy.h)
+
 55º: [2 Timothy](2timothy.h)
+
 56º: [Titus](titus.h)
+
 57º: [Philemon](philemon.h)
+
 58º: [Hebrews](hebrews.h)
+
 59º: [James](james.h)
+
 60º: [1 Peter](1peter.h)
+
 61º: [2 Peter](2peter.h)
+
 62º: [1 John](1john.h)
+
 63º: [2 John](2john.h)
+
 64º: [3 John](3john.h)
+
 65º: [Jude](jude.h)
+
 66º: [Revelation](revelation.h)
 
 ## How the C++ files were created
