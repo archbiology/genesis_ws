@@ -5,6 +5,8 @@ cmake_minimum_required(VERSION 3.10)
 # --------------------
 project(Genesis)
 
+include_directories(src/engine)
+
 # --------------------
 # Set the C++ standard
 # --------------------
@@ -14,4 +16,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # ------------------
 # Add the executable
 # ------------------
-add_executable(genesis src/engine/core/creation.cpp src/engine/main.cpp)
+add_executable(
+    genesis
+    src/engine/core/application.cpp
+    src/engine/core/creation.cpp
+    src/engine/core/component.cpp
+    src/engine/events/event_service.cpp
+    src/engine/main.cpp
+)

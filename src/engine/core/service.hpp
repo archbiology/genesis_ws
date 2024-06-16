@@ -17,7 +17,7 @@ class Service {
      *
      * @param param Optional parameters for initialization.
      */
-    virtual void initialize(const std::string& param) = 0;
+    // virtual void initialize(const std::string& param) = 0;
 
     /**
      * Terminates the Service - Abstract.
