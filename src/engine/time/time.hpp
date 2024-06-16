@@ -39,11 +39,12 @@ class Time {
      */
     static Time* instance;
 
-   private:
     /**
      * @brief Current time point using high-resolution clock.
      */
     std::chrono::time_point<std::chrono::high_resolution_clock> currentTime;
+
+   private:
 };
 
 }  // namespace Genesis
