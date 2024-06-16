@@ -4,11 +4,17 @@
 
 namespace Genesis {
 
-void EventService::update(App &engine) {
+// void EventService::initialize(const std::string& param)() {
+
+// }
+
+// void EventService::update(Application &engine) {
+void EventService::update() {
     do {
         eventsPending = false;
-        engine.updateObjects();
+        // engine.updateObjects();
     } while (eventsPending);
 }
 
+void EventService::terminate() {}
 }  // namespace Genesis

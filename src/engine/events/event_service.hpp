@@ -5,7 +5,7 @@
 
 namespace Genesis {
 
-class App;  // Forward declaration
+class Application;  // Forward declaration
 
 
 /**
@@ -16,13 +16,31 @@ class App;  // Forward declaration
  */
 class EventService : public Service {
    public:
+
+   /**
+     * Initializes the Service.
+     *
+     * @param param Optional parameters for initialization.
+     */
+    // void initialize(const std::string& param);
+
+    /**
+     * Terminates the Service.
+     */
+    void terminate();
+
+    /**
+     * Updates the Service.
+     */
+    void update();
+
     /**
      * @brief Updates the EventService.
      *
      * @details Continuously updates objects in the application
      * until no events are pending.
      */
-    void update(App &application);
+    // void update(Application &application);
 
    private:
     /**
