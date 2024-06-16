@@ -1,0 +1,4 @@
+/usr/bin/g++
+-std=c++17
+-xc++
+-I/genesis_ws/src/engine
