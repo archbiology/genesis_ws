@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <stdexcept>
 
+#include "component.hpp"
+
 namespace Genesis {
 
 int Creation::nextId = 0;
@@ -181,7 +183,4 @@ std::vector<std::shared_ptr<Creation>> Creation::findNodes(
     return found;
 }
 
-void Component::setCreation(std::shared_ptr<Creation> creation) {
-    _creation = creation;
-}
 }  // namespace Genesis

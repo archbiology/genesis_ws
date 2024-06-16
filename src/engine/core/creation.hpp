@@ -251,36 +251,37 @@ class Creation : public std::enable_shared_from_this<Creation> {
  * specific functionality. Derived classes should implement the realize() and
  * update() methods for initialization and updating logic.
  */
-class Component {
-   public:
-    /**
-     * @brief Initializes the component.
-     *
-     * This method should be overridden in derived classes to perform
-     * initialization tasks. It is called when the component is added to a
-     * Creation and is being prepared for use.
-     */
-    virtual void realize() = 0;
+// class Component {
+//    public:
+//     /**
+//      * @brief Initializes the component.
+//      *
+//      * This method should be overridden in derived classes to perform
+//      * initialization tasks. It is called when the component is added to a
+//      * Creation and is being prepared for use.
+//      */
+//     virtual void realize() = 0;
 
-    /**
-     * @brief Updates the component.
-     *
-     * This method should be overridden in derived classes to update the state
-     * of the component. It is called each frame or time step to update the
-     * component's behavior.
-     */
-    virtual void update() = 0;
+//     /**
+//      * @brief Updates the component.
+//      *
+//      * This method should be overridden in derived classes to update the
+//      state
+//      * of the component. It is called each frame or time step to update the
+//      * component's behavior.
+//      */
+//     virtual void update() = 0;
 
-    /**
-     * @brief Sets the Creation that owns this component.
-     *
-     * @param creation The Creation to which this component belongs.
-     */
-    void setCreation(std::shared_ptr<Creation> creation);
+//     /**
+//      * @brief Sets the Creation that owns this component.
+//      *
+//      * @param creation The Creation to which this component belongs.
+//      */
+//     void setCreation(std::shared_ptr<Creation> creation);
 
-    /**
-     * @brief The Creation to which this component belongs.
-     */
-    std::shared_ptr<Creation> _creation;
-};
+//     /**
+//      * @brief The Creation to which this component belongs.
+//      */
+//     std::shared_ptr<Creation> _creation;
+// };
 }  // namespace Genesis
