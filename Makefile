@@ -1,6 +1,7 @@
 # ----------------
 # Define variables
 # ----------------
+CURRENT_DIR := $(shell pwd)
 BUILD_DIR = build
 SRC_DIR = src
 TARGET = Genesis
@@ -19,6 +20,13 @@ all: $(BUILD_DIR)
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
+# ---------------------------------------------------------------------
+# Create a soft link on /genesis_ws pointing to this directory
+# so that VS Code can find included files through src/compile_flags.txt
+# ---------------------------------------------------------------------
+setup:
+	sudo rm -f /genesis_ws || true && sudo ln -sfv $(CURRENT_DIR) /genesis_ws
+
 # ----------------------------
 # Run the 'genesis' executable
 # ----------------------------
@@ -32,4 +40,4 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 # Add phony targets
-.PHONY: all run clean
+.PHONY: setup all run clean
