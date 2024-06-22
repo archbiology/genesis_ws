@@ -2,6 +2,7 @@
 
 #include "core/service.hpp"
 #include "events/event_service.hpp"
+#include <iostream>
 
 namespace Genesis {
 
@@ -41,7 +42,7 @@ void Application::initialize(const std::string& param) {
     addService("tween");
     addService("events");
     addService("graphics");
-    // TODO: Add Physics service
+    addService("physics");
 
     // Start all the services
     initServices(param);
@@ -49,7 +50,9 @@ void Application::initialize(const std::string& param) {
 
 void Application::addService(const std::string& serviceName) {
     std::shared_ptr<Service> service = createService(serviceName);
-    _services.push_back(service);
+    if(service) {
+        _services.push_back(service);
+    }
 }
 
 void Application::initServices(const std::string& param) {
@@ -91,6 +94,16 @@ void Application::runloop() {
         // FIXME: Correctly implement this method. Check Vizi's application.js
         // lastFrameTime = Date::now(); // Example usage, replace with actual
         // logic Add appropriate logic here
+
+        // Overall idea
+        // while (user does not exit)
+        //     check for user input
+        //     run AI
+        //     move objects
+        //     resolve collisions
+        //     draw graphics
+        //     play sounds
+        // end while
     }
 }
 

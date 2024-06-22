@@ -1,8 +1,6 @@
 #ifndef genesis_service
 #define genesis_service
 
-#include <string>
-
 namespace Genesis {
 
 /**
