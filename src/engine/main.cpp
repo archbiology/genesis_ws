@@ -1,21 +1,21 @@
-#include "core/creation.hpp"
-#include "core/application.hpp"
-#include "events/event_service.hpp"
+#include "core/app.hpp"
+#include "core/heart.hpp"
 
-int main() {
-    printf("Instantiating Genesis engine...");
-    // std::shared_ptr<Genesis::Creation> creation = std::make_shared<Genesis::Creation>();
-    std::shared_ptr<Genesis::Application> engine = std::make_shared<Genesis::Application>();
+namespace AlphaOmega {
 
-    // Set a name for the creation
-    // creation->name = "MyCreation";
+int speak() {
+    printf("Instantiating Genesis engine...\n");
+    LetThereBe(Genesis::App) genesis = ItCameToPass(Genesis::App);
 
-    // Print the name of the creation
-    // std::cout << "Creation Name: " << creation->name << std::endl;
+    printf("Initializing...\n");
+    genesis->initialize();
 
-    printf("Running...");
-    engine->run();
+    printf("Running...\n");
+    genesis->run();
 
     printf("Finished \n\n");
     return 0;
 }
+}
+
+int main() { return AlphaOmega::speak(); }

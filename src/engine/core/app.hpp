@@ -6,7 +6,7 @@
 
 #include "creation.hpp"
 #include "service.hpp"
-
+#include "core/heart.hpp"
 namespace Genesis {
 
 class EventDispatcher;
@@ -15,22 +15,71 @@ class Input;
 class Services;
 
 /**
- * The base Application class.
+ * The base App class. It's the Engine.
  */
-class Application {
+class App {
    public:
     /**
      * Constructor.
      */
-    Application(const std::string& param = "");
+    App(const std::string& param = "");
+
+    /**
+     * @brief Genesis 1:1
+     * @details In the beginning, God created the heavens and the earth.
+     */
+    LetThereBe(Creation) heavens, earth;
+
+    /**
+     * @brief Genesis 1:3-5
+     * @details The first day: Lightday, not "Sun day"
+     */
+    LetThereBe(Creation) light, day; // day = light
+
+    /**
+     * @brief Genesis 1:7,8
+     * @details The second day: Skyday, not "Moon day"
+     */
+    LetThereBe(Creation) sky; // = heavens
+
+    /**
+     * @brief Genesis 1:9-13
+     * @details he third day: Greenday, not "Tiu's day"
+     */
+    LetThereBe(Creation) land; // = earth;
+    LetThereBe(Creation) grass, herbs, trees;
+
+    /**
+     * @brief Genesis 1:14-19
+     * @details The fouth day: Lampsday, not "Wooden's day"
+     */
+    LetThereBe(Creation) sun, moon, stars;
+
+    /**
+     * @brief Genesis 1:20-23
+     * @details The fifth day: Fishbirdday, not "Thor's day"
+     */
+    LetThereBe(Creation) fish, birds;
+
+    /**
+     * @brief Genesis 1:24-31
+     * @details The sixth day: Walkersday, not "Fry day"
+     */
+    LetThereBe(Creation) repitiles, animals, man, woman;
+
+    /**
+     * @brief Genesis 2:1-4 (The Shabbath)
+     * @details The seventh day: Restingday, not "Saturn day"
+     */
+    LetThereBe(Creation) resting;
 
     /**
      * Destructor.
      */
-    ~Application();
+    ~App();
 
     /**
-     * Initializes the Application.
+     * Initializes the App.
      */
     void initialize(const std::string& param = "");
 
