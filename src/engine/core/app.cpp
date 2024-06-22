@@ -1,4 +1,4 @@
-#include "application.hpp"
+#include "app.hpp"
 
 #include "core/service.hpp"
 #include "events/event_service.hpp"
@@ -6,22 +6,22 @@
 
 namespace Genesis {
 
-Application::Application(const std::string& param)
+App::App(const std::string& param)
     : running(false),
       tabstop(false),
       _time(nullptr),
       _input(nullptr),
       _servicesManager(nullptr) {
     // EventDispatcher::EventDispatcher();
-    // Application::instance = this;
+    // App::instance = this;
     initialize(param);
 }
 
-Application::~Application() {
+App::~App() {
     // Cleanup resources if needed
 }
 
-void Application::initialize(const std::string& param) {
+void App::initialize(const std::string& param) {
     _services.clear();
     _objects.clear();
     // _time = new Time(); // Example initialization
@@ -48,21 +48,21 @@ void Application::initialize(const std::string& param) {
     initServices(param);
 }
 
-void Application::addService(const std::string& serviceName) {
+void App::addService(const std::string& serviceName) {
     std::shared_ptr<Service> service = createService(serviceName);
     if(service) {
         _services.push_back(service);
     }
 }
 
-void Application::initServices(const std::string& param) {
+void App::initServices(const std::string& param) {
     for (auto& service : _services) {
         // FIXME: call the line below.
         // service->initialize(param);
     }
 }
 
-std::shared_ptr<Service> Application::createService(
+std::shared_ptr<Service> App::createService(
     const std::string& serviceName) {
     if (serviceName == "event") {
         return std::make_shared<EventService>();
@@ -74,12 +74,12 @@ std::shared_ptr<Service> Application::createService(
     return nullptr;
 }
 
-void Application::focus() {
+void App::focus() {
     // Hack hack hack should be the input system
     // Graphics::instance.focus();
 }
 
-void Application::run() {
+void App::run() {
     // core game loop here
     realizeObjects();
     // Graphics::instance.scene.updateMatrixWorld();FIXME: call this.
@@ -88,7 +88,7 @@ void Application::run() {
     runloop();
 }
 
-void Application::runloop() {
+void App::runloop() {
     while (running) {
         updateServices();
         // FIXME: Correctly implement this method. Check Vizi's application.js
@@ -107,143 +107,143 @@ void Application::runloop() {
     }
 }
 
-void Application::updateServices() {
+void App::updateServices() {
     for (auto& service : _services) {
         service->update();
     }
 }
 
-void Application::updateObjects() {
+void App::updateObjects() {
     for (auto& object : _objects) {
         object->update();
     }
 }
 
-void Application::addObject(std::shared_ptr<Creation> o) {
+void App::addObject(std::shared_ptr<Creation> o) {
     _objects.push_back(o);
     if (running) {
         o->realize();
     }
 }
 
-void Application::removeObject(std::shared_ptr<Creation> o) {
+void App::removeObject(std::shared_ptr<Creation> o) {
     auto it = std::find(_objects.begin(), _objects.end(), o);
     if (it != _objects.end()) {
         _objects.erase(it);
     }
 }
 
-void Application::realizeObjects() {
+void App::realizeObjects() {
     for (auto& object : _objects) {
         object->realize();
     }
 }
 
-// void Application::onMouseMove(const MouseEvent& event) {
+// void App::onMouseMove(const MouseEvent& event) {
 //     if (mouseDelegate && mouseDelegate->onMouseMove) {
 //         mouseDelegate->onMouseMove(event);
 //     }
 // }
 
-// void Application::onMouseDown(const MouseEvent& event) {
+// void App::onMouseDown(const MouseEvent& event) {
 //     if (mouseDelegate && mouseDelegate->onMouseDown) {
 //         mouseDelegate->onMouseDown(event);
 //     }
 // }
 
-// void Application::onMouseUp(const MouseEvent& event) {
+// void App::onMouseUp(const MouseEvent& event) {
 //     if (mouseDelegate && mouseDelegate->onMouseUp) {
 //         mouseDelegate->onMouseUp(event);
 //     }
 // }
 
-// void Application::onMouseClick(const MouseEvent& event) {
+// void App::onMouseClick(const MouseEvent& event) {
 //     if (mouseDelegate && mouseDelegate->onMouseClick) {
 //         mouseDelegate->onMouseClick(event);
 //     }
 // }
 
-// void Application::onMouseDoubleClick(const MouseEvent& event) {
+// void App::onMouseDoubleClick(const MouseEvent& event) {
 //     if (mouseDelegate && mouseDelegate->onMouseDoubleClick) {
 //         mouseDelegate->onMouseDoubleClick(event);
 //     }
 // }
 
-// void Application::onMouseScroll(const MouseScrollEvent& event) {
+// void App::onMouseScroll(const MouseScrollEvent& event) {
 //     if (mouseDelegate && mouseDelegate->onMouseScroll) {
 //         mouseDelegate->onMouseScroll(event);
 //     }
 // }
 
-// void Application::onKeyDown(const KeyEvent& event) {
+// void App::onKeyDown(const KeyEvent& event) {
 //     if (keyboardDelegate && keyboardDelegate->onKeyDown) {
 //         keyboardDelegate->onKeyDown(event);
 //     }
 // }
 
-// void Application::onKeyUp(const KeyEvent& event) {
+// void App::onKeyUp(const KeyEvent& event) {
 //     if (keyboardDelegate && keyboardDelegate->onKeyUp) {
 //         keyboardDelegate->onKeyUp(event);
 //     }
 // }
 
-// void Application::onKeyPress(const KeyEvent& event) {
+// void App::onKeyPress(const KeyEvent& event) {
 //     if (keyboardDelegate && keyboardDelegate->onKeyPress) {
 //         keyboardDelegate->onKeyPress(event);
 //     }
 // }
 
-// void Application::handleMouseMove(const MouseEvent& event) {
-//     if (Application::instance && Application::instance->onMouseMove) {
-//         Application::instance->onMouseMove(event);
+// void App::handleMouseMove(const MouseEvent& event) {
+//     if (App::instance && App::instance->onMouseMove) {
+//         App::instance->onMouseMove(event);
 //     }
 // }
 
-// void Application::handleMouseDown(const MouseEvent& event) {
-//     if (Application::instance && Application::instance->onMouseDown) {
-//         Application::instance->onMouseDown(event);
+// void App::handleMouseDown(const MouseEvent& event) {
+//     if (App::instance && App::instance->onMouseDown) {
+//         App::instance->onMouseDown(event);
 //     }
 // }
 
-// void Application::handleMouseUp(const MouseEvent& event) {
-//     if (Application::instance && Application::instance->onMouseUp) {
-//         Application::instance->onMouseUp(event);
+// void App::handleMouseUp(const MouseEvent& event) {
+//     if (App::instance && App::instance->onMouseUp) {
+//         App::instance->onMouseUp(event);
 //     }
 // }
 
-// void Application::handleMouseClick(const MouseEvent& event) {
-//     if (Application::instance && Application::instance->onMouseClick) {
-//         Application::instance->onMouseClick(event);
+// void App::handleMouseClick(const MouseEvent& event) {
+//     if (App::instance && App::instance->onMouseClick) {
+//         App::instance->onMouseClick(event);
 //     }
 // }
 
-// void Application::handleMouseDoubleClick(const MouseEvent& event) {
-//     if (Application::instance && Application::instance->onMouseDoubleClick) {
-//         Application::instance->onMouseDoubleClick(event);
+// void App::handleMouseDoubleClick(const MouseEvent& event) {
+//     if (App::instance && App::instance->onMouseDoubleClick) {
+//         App::instance->onMouseDoubleClick(event);
 //     }
 // }
 
-// void Application::handleMouseScroll(const MouseScrollEvent& event) {
-//     if (Application::instance && Application::instance->onMouseScroll) {
-//         Application::instance->onMouseScroll(event);
+// void App::handleMouseScroll(const MouseScrollEvent& event) {
+//     if (App::instance && App::instance->onMouseScroll) {
+//         App::instance->onMouseScroll(event);
 //     }
 // }
 
-// void Application::handleKeyDown(const KeyEvent& event) {
-//     if (Application::instance && Application::instance->onKeyDown) {
-//         Application::instance->onKeyDown(event);
+// void App::handleKeyDown(const KeyEvent& event) {
+//     if (App::instance && App::instance->onKeyDown) {
+//         App::instance->onKeyDown(event);
 //     }
 // }
 
-// void Application::handleKeyUp(const KeyEvent& event) {
-//     if (Application::instance && Application::instance->onKeyUp) {
-//         Application::instance->onKeyUp(event);
+// void App::handleKeyUp(const KeyEvent& event) {
+//     if (App::instance && App::instance->onKeyUp) {
+//         App::instance->onKeyUp(event);
 //     }
 // }
 
-// void Application::handleKeyPress(const KeyEvent& event) {
-//     if (Application::instance && Application::instance->onKeyPress) {
-//         Application::instance->onKeyPress(event);
+// void App::handleKeyPress(const KeyEvent& event) {
+//     if (App::instance && App::instance->onKeyPress) {
+//         App::instance->onKeyPress(event);
 //     }
 // }
 

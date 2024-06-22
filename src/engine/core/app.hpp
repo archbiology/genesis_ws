@@ -15,22 +15,22 @@ class Input;
 class Services;
 
 /**
- * The base Application class.
+ * The base App class. It's the Engine.
  */
-class Application {
+class App {
    public:
     /**
      * Constructor.
      */
-    Application(const std::string& param = "");
+    App(const std::string& param = "");
 
     /**
      * Destructor.
      */
-    ~Application();
+    ~App();
 
     /**
-     * Initializes the Application.
+     * Initializes the App.
      */
     void initialize(const std::string& param = "");
 
