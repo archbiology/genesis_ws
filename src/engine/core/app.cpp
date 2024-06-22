@@ -22,6 +22,51 @@ App::~App() {
 }
 
 void App::initialize(const std::string& param) {
+
+    // -----------
+    // Genesis 1:1
+    // -----------
+    heavens = ItCameToPass(Creation);
+    earth = ItCameToPass(Creation);
+
+    // ----------------------------------------
+    // Genesis 1:3-5 (Lightday), not "Sun day")
+    // ----------------------------------------
+    light = ItCameToPass(Creation);
+    day = light;
+
+    // ------------------------------------------------------
+    // Genesis 1:7,8 (The second day: Skyday, not "Moon day")
+    // ------------------------------------------------------
+    sky = heavens;
+
+    // ---------------------------------------------------------
+    // Genesis 1:9-13 (The third day: Greenday, not "Tiu's day")
+    // ---------------------------------------------------------
+    land = earth;
+    // grass, herbs, trees
+
+    // -------------------------------------------------------------
+    // Genesis 1:14-19 (The fouth day: Lampsday, not "Wooden's day")
+    // -------------------------------------------------------------
+    // sun, moon, stars;
+
+    // --------------------------------------------------------------
+    // Genesis 1:20-23 (The fifth day: Fishbirdday, not "Thor's day")
+    // --------------------------------------------------------------
+    // fish, birds;
+
+    // ----------------------------------------------------------
+    // Genesis 1:24-31 (The sixth day: Walkersday, not "Fry day")
+    // ----------------------------------------------------------
+    // repitiles, animals;
+    // man, woman;
+
+    // --------------------------------------------------------------
+    // Genesis 2:1-4 (The seventh day: Restingday, not "Saturn day")
+    // --------------------------------------------------------------
+    //  resting;
+
     _services.clear();
     _objects.clear();
     // _time = new Time(); // Example initialization
