@@ -18,9 +18,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # ------------------
 add_executable(
     genesis
+    src/engine/main.cpp
     src/engine/core/app.cpp
+    src/engine/math/vec3.cpp
     src/engine/core/creation.cpp
     src/engine/core/component.cpp
     src/engine/events/event_service.cpp
-    src/engine/main.cpp
 )
