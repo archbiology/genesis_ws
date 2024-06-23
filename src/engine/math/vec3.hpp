@@ -131,6 +131,37 @@ class Vec3 {
     Vec3& operator+=(float scalar);
 
     /**
+     * @brief Negation operator.
+     * Returns the negation of this vector.
+     * @return A new Vec3 which is the negation of this vector.
+     */
+    Vec3 operator-() const;
+
+    /**
+     * @brief Calculates the dot product of this vector and another vector.
+     *
+     * The dot product is a way to multiply two vectors to get a single number.
+     *
+     * Think of two people pushing a box. If they push in the same direction,
+     * they add their efforts together. If they push in opposite directions,
+     * they cancel each other out.
+     *
+     * Simple Analogy
+     * --------------
+     * Think of two people pushing a box together:
+     * 1. Same Direction: If they push in the same direction, they help each
+     *  other move the box faster.
+     * 2. Opposite Direction: If they push in opposite directions, they cancel
+     *  each other out, and the box doesn’t move much.
+     * 3. Right Angle: If one person pushes sideways and the other pushes
+     * forward, the sideways push doesn’t help move the box forward at all.
+     *
+     * @param other The other vector.
+     * @return The dot product.
+     */
+    float dot(const Vec3& other) const;
+
+    /**
      * @brief Output stream operator for printing the vector.
      * @param os The output stream.
      * @param vec The vector to print.
