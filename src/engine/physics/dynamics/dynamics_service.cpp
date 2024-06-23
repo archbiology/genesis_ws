@@ -11,7 +11,7 @@ void DynamicsService::update() {
 
     float dt = 1;  // FIXME: this must be a parameters or set somewhere else.
 
-    for (auto& creation : genesis->_objects) {
+    for (auto& creation : genesis->objects) {
         // creation->update();
 
         // -------------

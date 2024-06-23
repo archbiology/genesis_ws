@@ -24,4 +24,5 @@ add_executable(
     src/engine/core/creation.cpp
     src/engine/core/component.cpp
     src/engine/events/event_service.cpp
+    src/engine/physics/dynamics/dynamics_service.cpp
 )
