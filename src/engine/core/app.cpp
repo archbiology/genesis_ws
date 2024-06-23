@@ -103,7 +103,7 @@ void App::addService(const std::string& serviceName) {
 void App::initServices(const std::string& param) {
     for (auto& service : _services) {
         // FIXME: call the line below.
-        // service->initialize(param);
+        service->initialize(this);
     }
 }
 
