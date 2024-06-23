@@ -6,6 +6,8 @@
 #include <vector>
 
 #include "math/vec3.hpp"
+#include "physics/collision/detection/colliders.hpp"
+#include "physics/collision/detection/transform.hpp"
 
 namespace Genesis {
 
@@ -16,16 +18,35 @@ class Component;  // Forward declaration
  *
  * This class manages hierarchical relationships, components, and
  * initialization/update routines.
+ *
+ * Credits:
+ *  1. https://github.com/tparisi/Vizi/blob/master/engine/src/core/object.js
+ *  2. https://winter.dev/articles/physics-engine
+ *  3. ChatGPT
  */
 class Creation : public std::enable_shared_from_this<Creation> {
    public:
-    // ---------------------------------------------------
-    // https://winter.dev/articles/physics-engine#Dynamics
-    // ---------------------------------------------------
     float mass;
     Vec3 velocity;
     Vec3 force;
-    Vec3 position;
+
+    /**
+     * @brief The collider associated with this object.
+     *
+     * This pointer holds the collider component of the object, which is used
+     * for collision detection and response. It can point to different types of
+     * colliders, such as SphereCollider or PlaneCollider.
+     */
+    Collider *collider;
+
+    /**
+     * @brief The transform associated with this object.
+     *
+     * The transform component of the object, which describes its position,
+     * scale, and rotation in 3D space. The transform is essential for placing
+     * the object within the game world and manipulating its orientation.
+     */
+    Transform transform;
 
     /**
      * @brief Constructor for Creation objects.
