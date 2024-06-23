@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include "math/vec3.hpp"
+
 namespace Genesis {
 
 class Component;  // Forward declaration
@@ -17,6 +19,14 @@ class Component;  // Forward declaration
  */
 class Creation : public std::enable_shared_from_this<Creation> {
    public:
+    // ---------------------------------------------------
+    // https://winter.dev/articles/physics-engine#Dynamics
+    // ---------------------------------------------------
+    float mass;
+    Vec3 velocity;
+    Vec3 force;
+    Vec3 position;
+
     /**
      * @brief Constructor for Creation objects.
      *

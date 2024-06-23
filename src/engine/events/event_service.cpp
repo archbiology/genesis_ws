@@ -4,9 +4,7 @@
 
 namespace Genesis {
 
-// void EventService::initialize(const std::string& param)() {
-
-// }
+void EventService::initialize(App* genesis) { this->genesis = genesis; }
 
 // void EventService::update(Application &engine) {
 void EventService::update() {

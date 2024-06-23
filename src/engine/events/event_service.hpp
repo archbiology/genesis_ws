@@ -22,7 +22,7 @@ class EventService : public Service {
      *
      * @param param Optional parameters for initialization.
      */
-    // void initialize(const std::string& param);
+    void initialize(App* genesis);
 
     /**
      * Terminates the Service.

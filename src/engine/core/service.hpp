@@ -1,7 +1,10 @@
 #ifndef genesis_service
 #define genesis_service
+#include <string>
 
 namespace Genesis {
+
+class App;  // Forward declaration
 
 /**
  * Interface for a Service.
@@ -9,13 +12,17 @@ namespace Genesis {
  * Allows multiple different backends for the same type of service.
  */
 class Service {
+   protected:
+    std::string name;
+    App* genesis;
+
    public:
     /**
      * Initializes the Service - Abstract.
      *
      * @param param Optional parameters for initialization.
      */
-    // virtual void initialize(const std::string& param) = 0;
+    virtual void initialize(App* genesis) = 0;
 
     /**
      * Terminates the Service - Abstract.

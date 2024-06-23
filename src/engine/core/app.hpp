@@ -244,11 +244,12 @@ class App {
      */
     // static void handleKeyPress(const KeyEvent& event);
 
+    std::vector<std::shared_ptr<Creation>> objects;
+
    private:
     bool running;
     bool tabstop;
     std::vector<std::shared_ptr<Service>> _services;
-    std::vector<std::shared_ptr<Creation>> _objects;
     Time* _time;                 // Example instance of Time
     Input* _input;               // Example instance of Input
     Services* _servicesManager;  // Example instance of Services

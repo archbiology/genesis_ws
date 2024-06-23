@@ -1,8 +1,10 @@
 #include "app.hpp"
 
+#include <memory>
+
 #include "core/service.hpp"
 #include "events/event_service.hpp"
-#include <iostream>
+#include "physics/dynamics/dynamics_service.hpp"
 
 namespace Genesis {
 
@@ -22,7 +24,6 @@ App::~App() {
 }
 
 void App::initialize(const std::string& param) {
-
     // -----------
     // Genesis 1:1
     // -----------
@@ -68,7 +69,7 @@ void App::initialize(const std::string& param) {
     //  resting;
 
     _services.clear();
-    _objects.clear();
+    objects.clear();
     // _time = new Time(); // Example initialization
     // _input = new Input(); // Example initialization
     // _servicesManager = new Services(); // Example initialization
@@ -87,7 +88,7 @@ void App::initialize(const std::string& param) {
     addService("tween");
     addService("events");
     addService("graphics");
-    addService("physics");
+    addService("physics::dynamics");
 
     // Start all the services
     initServices(param);
@@ -95,27 +96,28 @@ void App::initialize(const std::string& param) {
 
 void App::addService(const std::string& serviceName) {
     std::shared_ptr<Service> service = createService(serviceName);
-    if(service) {
+    if (service) {
         _services.push_back(service);
     }
 }
 
 void App::initServices(const std::string& param) {
     for (auto& service : _services) {
-        // FIXME: call the line below.
-        // service->initialize(param);
+        service->initialize(this);
     }
 }
 
-std::shared_ptr<Service> App::createService(
-    const std::string& serviceName) {
+std::shared_ptr<Service> App::createService(const std::string& serviceName) {
     if (serviceName == "event") {
         return std::make_shared<EventService>();
-        // TODO: Add Physics Service.
         // } else if (serviceName == "time") {
         //     return std::make_shared<TimeService>();
     }
-    // Handle unknown service
+
+    if (serviceName == "physics::dynamics") {
+        return std::make_shared<DynamicsService>();
+    }
+
     return nullptr;
 }
 
@@ -159,27 +161,27 @@ void App::updateServices() {
 }
 
 void App::updateObjects() {
-    for (auto& object : _objects) {
+    for (auto& object : objects) {
         object->update();
     }
 }
 
 void App::addObject(std::shared_ptr<Creation> o) {
-    _objects.push_back(o);
+    objects.push_back(o);
     if (running) {
         o->realize();
     }
 }
 
 void App::removeObject(std::shared_ptr<Creation> o) {
-    auto it = std::find(_objects.begin(), _objects.end(), o);
-    if (it != _objects.end()) {
-        _objects.erase(it);
+    auto it = std::find(objects.begin(), objects.end(), o);
+    if (it != objects.end()) {
+        objects.erase(it);
     }
 }
 
 void App::realizeObjects() {
-    for (auto& object : _objects) {
+    for (auto& object : objects) {
         object->realize();
     }
 }
