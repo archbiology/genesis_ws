@@ -5,6 +5,8 @@
 #include "core/service.hpp"
 #include "events/event_service.hpp"
 #include "physics/collision/detection/collision_detection_service.hpp"
+#include "physics/collision/response/collision_response_service.hpp"
+#include "physics/collision/response/impulse_solver.hpp"
 #include "physics/dynamics/dynamics_service.hpp"
 
 namespace Genesis {
@@ -71,6 +73,7 @@ void App::initialize(const std::string& param) {
 
     _services.clear();
     objects.clear();
+    solvers.clear();
     // _time = new Time(); // Example initialization
     // _input = new Input(); // Example initialization
     // _servicesManager = new Services(); // Example initialization
@@ -91,6 +94,9 @@ void App::initialize(const std::string& param) {
     addService("graphics");
     addService("physics::dynamics");
     addService("physics::collison::detection");
+    addService("physics::collison::response");
+
+    addSolver("physics::collision::impulse_solver");
 
     // Start all the services
     initServices(param);
@@ -100,6 +106,13 @@ void App::addService(const std::string& serviceName) {
     std::shared_ptr<Service> service = createService(serviceName);
     if (service) {
         _services.push_back(service);
+    }
+}
+
+void App::addSolver(const std::string& solverName) {
+    std::shared_ptr<Solver> solver = createSolver(solverName);
+    if (solver) {
+        solvers.push_back(solver);
     }
 }
 
@@ -124,6 +137,19 @@ std::shared_ptr<Service> App::createService(const std::string& serviceName) {
         return std::make_shared<CollisionDetectionService>();
     }
 
+    if (serviceName == "physics::collison::response") {
+        return std::make_shared<CollisionResponseService>();
+    }
+
+    return nullptr;
+}
+
+std::shared_ptr<Solver> App::createSolver(const std::string& solverName) {
+    if (solverName == "physics::collision::impulse_solver") {
+        return std::make_shared<ImpulseSolver>();
+    }
+
+    std::cerr << "Unknown solver type: " << solverName << std::endl;
     return nullptr;
 }
 
