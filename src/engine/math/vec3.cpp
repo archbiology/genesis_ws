@@ -88,6 +88,12 @@ Vec3& Vec3::operator-=(float scalar) {
 
 Vec3 Vec3::operator-() const { return Vec3(-x, -y, -z); }
 
+bool Vec3::operator==(const Vec3& other) const {
+    // Compare each component
+    return std::abs(x - other.x) < EPSILON && std::abs(y - other.y) < EPSILON &&
+           std::abs(z - other.z) < EPSILON;
+}
+
 float Vec3::dot(const Vec3& other) const {
     return x * other.x + y * other.y + z * other.z;
 }

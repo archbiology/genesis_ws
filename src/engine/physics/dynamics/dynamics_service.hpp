@@ -18,9 +18,9 @@ class App;  // Forward declaration
  * Credits: https://winter.dev/articles/physics-engine#Dynamics
  */
 class DynamicsService : public Service {
+   public:
     Vec3 gravity = Vec3(0, -9.81f, 0);
 
-   public:
     /**
      * Initializes the Service.
      *

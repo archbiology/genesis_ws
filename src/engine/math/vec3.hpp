@@ -11,6 +11,10 @@ namespace Genesis {
  * Credits: https://winter.dev/articles/physics-engine and ChatGPT
  */
 class Vec3 {
+   private:
+    // Small epsilon value for floating point comparisons
+    static constexpr float EPSILON = 1e-6f;  // Adjust as necessary
+
    public:
     float x, y, z;
 
@@ -150,6 +154,9 @@ class Vec3 {
      * @return A new Vec3 which is the negation of this vector.
      */
     Vec3 operator-() const;
+
+    // Override equality operator ==
+    bool operator==(const Vec3& other) const;
 
     /**
      * @brief Calculates the dot product of this vector and another vector.

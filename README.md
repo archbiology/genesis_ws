@@ -57,3 +57,12 @@ Tested on Linux **Ubuntu 24.04**.
 
     make run
     ```
+
+5. **Test it**
+
+    ```bash
+
+    cd genesis_ws
+
+    make test
+    ```
