@@ -7,6 +7,7 @@
 #include "core/heart.hpp"
 #include "creation.hpp"
 #include "physics/collision/detection/collision.hpp"
+#include "physics/collision/response/solver.hpp"
 #include "service.hpp"
 
 namespace Genesis {
@@ -84,12 +85,6 @@ class App {
      * Initializes the App.
      */
     void initialize(const std::string& param = "");
-
-    /**
-     * Adds a service to the application.
-     * @param serviceName The name of the service to add.
-     */
-    void addService(const std::string& serviceName);
 
     /**
      * Initializes all added services.
@@ -248,6 +243,7 @@ class App {
 
     std::vector<std::shared_ptr<Creation>> objects;
     std::vector<Collision> collisions;
+    std::vector<std::shared_ptr<Solver>> solvers;
 
    private:
     bool running;
@@ -257,7 +253,11 @@ class App {
     Input* _input;               // Example instance of Input
     Services* _servicesManager;  // Example instance of Services
 
+    void addService(const std::string& serviceName);
+    void addSolver(const std::string& solverName);
+
     std::shared_ptr<Service> createService(const std::string& serviceName);
+    std::shared_ptr<Solver> createSolver(const std::string& solverName);
 };
 
 }  // namespace Genesis

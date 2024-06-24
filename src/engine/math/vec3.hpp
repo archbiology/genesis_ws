@@ -131,6 +131,20 @@ class Vec3 {
     Vec3& operator+=(float scalar);
 
     /**
+     * @brief Overloaded -= operator to subtract another Vec3 from this Vec3.
+     * @param other The other vector to subtract.
+     * @return A reference to this Vec3 after the subtraction.
+     */
+    Vec3& operator-=(const Vec3& other);
+
+    /**
+     * @brief Overloaded -= operator to subtract a float from this Vec3.
+     * @param scalar The float value to subtract.
+     * @return A reference to this Vec3 after the subtraction.
+     */
+    Vec3& operator-=(float scalar);
+
+    /**
      * @brief Negation operator.
      * Returns the negation of this vector.
      * @return A new Vec3 which is the negation of this vector.
