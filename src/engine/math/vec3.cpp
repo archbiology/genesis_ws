@@ -72,6 +72,20 @@ Vec3& Vec3::operator+=(float scalar) {
     return *this;
 }
 
+Vec3& Vec3::operator-=(const Vec3& other) {
+    this->x -= other.x;
+    this->y -= other.y;
+    this->z -= other.z;
+    return *this;
+}
+
+Vec3& Vec3::operator-=(float scalar) {
+    this->x -= scalar;
+    this->y -= scalar;
+    this->z -= scalar;
+    return *this;
+}
+
 Vec3 Vec3::operator-() const { return Vec3(-x, -y, -z); }
 
 float Vec3::dot(const Vec3& other) const {
