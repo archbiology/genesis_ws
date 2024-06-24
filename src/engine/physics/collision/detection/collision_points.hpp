@@ -64,7 +64,7 @@ class CollisionPoints {
      * This boolean value is true if a collision has been detected, and false
      * otherwise.
      */
-    bool hasCollision;
+    bool hasCollision = false;
 };
 
 }  // namespace Genesis

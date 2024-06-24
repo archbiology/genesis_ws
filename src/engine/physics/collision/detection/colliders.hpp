@@ -41,7 +41,7 @@ class Collider {
  *
  * Credits: https://winter.dev/articles/physics-engine#Collision, and ChatGPT.
  */
-class SphereCollider : Collider {
+class SphereCollider : public Collider {
    public:
     /**
      * @brief The center of the sphere.
@@ -67,7 +67,7 @@ class SphereCollider : Collider {
  *
  * Credits: https://winter.dev/articles/physics-engine#Collision, and ChatGPT.
  */
-class PlaneCollider : Collider {
+class PlaneCollider : public Collider {
    public:
     /**
      * @brief The normal vector of the plane.
