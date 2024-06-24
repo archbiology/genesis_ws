@@ -4,9 +4,11 @@
 #include <memory>
 #include <vector>
 
-#include "creation.hpp"
-#include "service.hpp"
 #include "core/heart.hpp"
+#include "creation.hpp"
+#include "physics/collision/detection/collision.hpp"
+#include "service.hpp"
+
 namespace Genesis {
 
 class EventDispatcher;
@@ -34,19 +36,19 @@ class App {
      * @brief Genesis 1:3-5
      * @details The first day: Lightday, not "Sun day"
      */
-    LetThereBe(Creation) light, day; // day = light
+    LetThereBe(Creation) light, day;  // day = light
 
     /**
      * @brief Genesis 1:7,8
      * @details The second day: Skyday, not "Moon day"
      */
-    LetThereBe(Creation) sky; // = heavens
+    LetThereBe(Creation) sky;  // = heavens
 
     /**
      * @brief Genesis 1:9-13
      * @details he third day: Greenday, not "Tiu's day"
      */
-    LetThereBe(Creation) land; // = earth;
+    LetThereBe(Creation) land;  // = earth;
     LetThereBe(Creation) grass, herbs, trees;
 
     /**
@@ -245,6 +247,7 @@ class App {
     // static void handleKeyPress(const KeyEvent& event);
 
     std::vector<std::shared_ptr<Creation>> objects;
+    std::vector<Collision> collisions;
 
    private:
     bool running;
