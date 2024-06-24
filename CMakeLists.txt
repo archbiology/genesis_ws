@@ -7,18 +7,22 @@ project(Genesis)
 
 include_directories(src/engine)
 
+# --------------------------
+# Locate Google Test package
+# --------------------------
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
 # --------------------
 # Set the C++ standard
 # --------------------
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# ------------------
-# Add the executable
-# ------------------
-add_executable(
-    genesis
-    src/engine/main.cpp
+# -------------------
+# Define source files
+# -------------------
+set(GENESIS_CPP_FILES
     src/engine/core/app.cpp
     src/engine/math/vec3.cpp
     src/engine/core/creation.cpp
@@ -30,3 +34,25 @@ add_executable(
     src/engine/physics/collision/response/collision_response_service.cpp
     src/engine/physics/collision/detection/collision_detection_service.cpp
 )
+
+# ---------------------
+# Define the test files
+# ---------------------
+set(GENESIS_TEST_FILES
+    src/engine/tests/physics/test_dynamics_service.cpp
+)
+
+# ----------------------------
+# Add the `genesis` executable
+# ----------------------------
+add_executable(genesis src/engine/main.cpp ${GENESIS_CPP_FILES})
+
+# ------------------------------
+# Add the `unitTests` executable
+# ------------------------------
+add_executable(
+    unitTests src/engine/tests/main.cpp
+    ${GENESIS_CPP_FILES}
+    ${GENESIS_TEST_FILES}
+)
+target_link_libraries(unitTests ${GTEST_LIBRARIES} pthread)

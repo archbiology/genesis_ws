@@ -33,6 +33,13 @@ setup:
 run: $(BUILD_DIR)/genesis
 	./$(BUILD_DIR)/genesis
 
+# ---------------------------------------------------------------
+# Run the 'unitTests' executable
+# Use '--gtest_filter=MySpecificTestCase.*' to run specific tests
+# ---------------------------------------------------------------
+test: $(BUILD_DIR)/unitTests
+	./$(BUILD_DIR)/unitTests --gtest_brief=1  # --gtest_filter=MySpecificTestCase.*
+
 # ------------------------
 # Clean up build directory
 # ------------------------
@@ -40,4 +47,4 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 # Add phony targets
-.PHONY: setup all run clean
+.PHONY: setup all run test clean
