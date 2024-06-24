@@ -4,6 +4,7 @@
 
 #include "core/service.hpp"
 #include "events/event_service.hpp"
+#include "physics/collision/detection/collision_detection_service.hpp"
 #include "physics/dynamics/dynamics_service.hpp"
 
 namespace Genesis {
@@ -89,6 +90,7 @@ void App::initialize(const std::string& param) {
     addService("events");
     addService("graphics");
     addService("physics::dynamics");
+    addService("physics::collison::detection");
 
     // Start all the services
     initServices(param);
@@ -116,6 +118,10 @@ std::shared_ptr<Service> App::createService(const std::string& serviceName) {
 
     if (serviceName == "physics::dynamics") {
         return std::make_shared<DynamicsService>();
+    }
+
+    if (serviceName == "physics::collison::detection") {
+        return std::make_shared<CollisionDetectionService>();
     }
 
     return nullptr;
@@ -151,6 +157,8 @@ void App::runloop() {
         //     draw graphics
         //     play sounds
         // end while
+
+        // FIXME: We have to reset `collisions` at the end of the loop.
     }
 }
 

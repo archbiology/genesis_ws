@@ -25,4 +25,6 @@ add_executable(
     src/engine/core/component.cpp
     src/engine/events/event_service.cpp
     src/engine/physics/dynamics/dynamics_service.cpp
+    src/engine/physics/collision/detection/collision_checker.cpp
+    src/engine/physics/collision/detection/collision_detection_service.cpp
 )

@@ -72,6 +72,12 @@ Vec3& Vec3::operator+=(float scalar) {
     return *this;
 }
 
+Vec3 Vec3::operator-() const { return Vec3(-x, -y, -z); }
+
+float Vec3::dot(const Vec3& other) const {
+    return x * other.x + y * other.y + z * other.z;
+}
+
 std::ostream& operator<<(std::ostream& os, const Vec3& vec) {
     os << "Vec3(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
     return os;

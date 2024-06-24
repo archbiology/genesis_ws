@@ -24,7 +24,7 @@ void DynamicsService::update() {
         // Calculate new velocity and position
         // -----------------------------------
         creation->velocity += creation->force / creation->mass * dt;
-        creation->position += creation->velocity * dt;
+        creation->transform.position += creation->velocity * dt;
 
         // --------------------------
         // Reset net force at the end
