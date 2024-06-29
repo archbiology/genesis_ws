@@ -25,7 +25,7 @@ Tested on Linux **Ubuntu 24.04**.
     ```bash
 
     sudo apt update
-    sudo apt install git make cmake -y
+    sudo apt install git make cmake libwebsockets-dev -y
     ```
 
 2. **Clone the Repository**

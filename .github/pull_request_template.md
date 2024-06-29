@@ -6,7 +6,7 @@
 # Credits
 
 ```
-// Whoever you want top public thank for the assistance in creating this PR.
+// Whoever you want to public thank for the assistance in creating this PR.
 // Example below:
 ```
 
