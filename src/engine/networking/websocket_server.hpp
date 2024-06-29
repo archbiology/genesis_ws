@@ -35,6 +35,9 @@ namespace Genesis {
         // std::thread t(Genesis::everySecond);
 
         server.start(8000);  // Replace with desired port number
+
+        // Now go to https://piehost.com/websocket-tester and
+        // type the following URL to test it: ws://localhost:8000
     }
  */
 class WebSocketServer {
