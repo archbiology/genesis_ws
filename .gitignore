@@ -1,2 +1,11 @@
 build
 .vscode
+
+# --------------------------------------------
+# https://troisjs.github.io/guide/install.html
+# --------------------------------------------
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local

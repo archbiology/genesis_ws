@@ -48,6 +48,9 @@ Tested on Linux **Ubuntu 24.04**.
     make
     ```
 
+    The `make` command builds the C++ `genesis` executable, and it also runs
+    `npm install` on the `rendering` folder to install `VueJs` dependencies.
+
 
 4. **Run it**
 
@@ -58,6 +61,21 @@ Tested on Linux **Ubuntu 24.04**.
     make run
     ```
 
+    Once you run it, please open the following URL in your browser:
+
+    http://localhost:3000
+
+
+    The `make run` commands calls `genesis.sh`, which in turn runs
+    both the C++ `genesis` executable, and `npm run dev` on the `rendering` folder.
+
+
+    The `genesis.sh` script kills both the C++ executable and npm when
+    `CTRL+C` is pressed.
+
+    The "rendering" runs on port `3000`, and the WebSocket server on port `7000`.
+
+
 5. **Test it**
 
     ```bash
@@ -66,3 +84,11 @@ Tested on Linux **Ubuntu 24.04**.
 
     make test
     ```
+
+## Troubleshooting
+
+In case things don't work as expected:
+
+1. Make sure ports `3000` and `7000` are not blocked by your firewall.
+2. Make sure `WebSocket` is not blocked by your web browser or firewall.
+3. Open the JavaScript Console (`CTRL + SHIFT + i`) and check the JavaScript log messages.
