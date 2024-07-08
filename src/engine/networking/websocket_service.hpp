@@ -1,6 +1,7 @@
 #ifndef genesis_websocket_service
 #define genesis_websocket_service
 
+#include <memory>
 #include "core/service.hpp"
 #include "websocket_server.hpp"
 
@@ -43,7 +44,7 @@ class WebSocketService : public Service {
     /**
      * @brief WebSocket server
      */
-    WebSocketServer wsServer;
+    std::shared_ptr<WebSocketServer> wsServer= nullptr;
 };
 
 }  // namespace Genesis

@@ -4,6 +4,7 @@
 
 #include "core/service.hpp"
 #include "events/event_service.hpp"
+#include "networking/websocket_service.hpp"
 #include "physics/collision/detection/collision_detection_service.hpp"
 #include "physics/collision/response/collision_response_service.hpp"
 #include "physics/collision/response/impulse_solver.hpp"
@@ -11,15 +12,15 @@
 
 namespace Genesis {
 
-App::App(const std::string& param)
+App::App()
     : running(false),
       tabstop(false),
+      initialized(false),
       _time(nullptr),
       _input(nullptr),
       _servicesManager(nullptr) {
     // EventDispatcher::EventDispatcher();
     // App::instance = this;
-    initialize(param);
 }
 
 App::~App() {
@@ -27,6 +28,11 @@ App::~App() {
 }
 
 void App::initialize(const std::string& param) {
+    // ----------------------------------------------
+    // Let's initialize only once, to avoid problems.
+    // ----------------------------------------------
+    if (this->initialized) return;
+
     // -----------
     // Genesis 1:1
     // -----------
@@ -95,11 +101,14 @@ void App::initialize(const std::string& param) {
     addService("physics::dynamics");
     addService("physics::collison::detection");
     addService("physics::collison::response");
+    addService("networking::websocket");
 
     addSolver("physics::collision::impulse_solver");
 
     // Start all the services
     initServices(param);
+
+    initialized = true;
 }
 
 void App::addService(const std::string& serviceName) {
@@ -139,6 +148,10 @@ std::shared_ptr<Service> App::createService(const std::string& serviceName) {
 
     if (serviceName == "physics::collison::response") {
         return std::make_shared<CollisionResponseService>();
+    }
+
+    if (serviceName == "networking::websocket") {
+        return std::make_shared<WebSocketService>();
     }
 
     return nullptr;

@@ -63,11 +63,11 @@ void WebSocketServer::start(int port) {
 
     context = lws_create_context(&info);
     if (!context) {
-        std::cerr << "WebSocket server creation failed.\n";
+        std::cerr << "🔴️ WebSocket server creation failed.\n";
         return;
     }
 
-    std::cout << "WebSocket server started on port " << port << std::endl;
+    std::cout << "🟢️ WebSocket server started on port " << port << std::endl;
 
     int count = 0;
     while (1) {
@@ -86,7 +86,7 @@ void WebSocketServer::stop() {
 void WebSocketServer::onConnect(lws *wsi) {
     clients.push_back(wsi);
 
-    std::cout << "\n🟢 wsi.onConnect(" << wsi << ")\n";
+    std::cout << "\n🟢️ wsi.onConnect(" << wsi << ")\n";
 
     // ------------------------------------------------------------
     // Call lws_callback_on_writable to make the websocket writable.
@@ -227,25 +227,25 @@ auto everySecond() {
 }
 }  // namespace Genesis
 
-int main() {
-    Genesis::WebSocketServer server;
+// int main() {
+//     Genesis::WebSocketServer server;
 
-    // https://iamsorush.com/posts/cpp-std-thread/
-    // std::thread t(Genesis::everySecond);
+//     // https://iamsorush.com/posts/cpp-std-thread/
+//     // std::thread t(Genesis::everySecond);
 
-    server.start(8000);  // Replace with desired port number
-    // Optionally, handle other logic or keep the server running
-    printf("❤️‍🔥❤️‍🔥 Running on port 8000 \n");
+//     server.start(8000);  // Replace with desired port number
+//     // Optionally, handle other logic or keep the server running
+//     printf("❤️‍🔥❤️‍🔥 Running on port 8000 \n");
 
-    while (true) {
-        printf(">>>>>>>> Sending msgs to clients...\n");
-        // Handle other server logic or keep alive tasks here
-        // For example, periodically send a message to all clients
-        // server.sendMsgToAllClients("Periodic message to all clients");
+//     while (true) {
+//         printf(">>>>>>>> Sending msgs to clients...\n");
+//         // Handle other server logic or keep alive tasks here
+//         // For example, periodically send a message to all clients
+//         // server.sendMsgToAllClients("Periodic message to all clients");
 
-        // Sleep or do other processing
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
+//         // Sleep or do other processing
+//         std::this_thread::sleep_for(std::chrono::seconds(1));
+//     }
 
-    return 0;
-}
+//     return 0;
+// }

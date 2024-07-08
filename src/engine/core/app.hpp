@@ -25,7 +25,7 @@ class App {
     /**
      * Constructor.
      */
-    App(const std::string& param = "");
+    App();
 
     /**
      * @brief Genesis 1:1
@@ -246,6 +246,7 @@ class App {
     std::vector<std::shared_ptr<Solver>> solvers;
 
    private:
+    bool initialized = false;
     bool running;
     bool tabstop;
     std::vector<std::shared_ptr<Service>> _services;
