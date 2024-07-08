@@ -28,6 +28,8 @@ set(GENESIS_CPP_FILES
     src/engine/core/creation.cpp
     src/engine/core/component.cpp
     src/engine/events/event_service.cpp
+    src/engine/networking/websocket_server.cpp
+    src/engine/networking/websocket_service.cpp
     src/engine/physics/dynamics/dynamics_service.cpp
     src/engine/physics/collision/response/impulse_solver.cpp
     src/engine/physics/collision/detection/collision_checker.cpp
@@ -46,6 +48,8 @@ set(GENESIS_TEST_FILES
 # Add the `genesis` executable
 # ----------------------------
 add_executable(genesis src/engine/main.cpp ${GENESIS_CPP_FILES})
+target_link_libraries(genesis websockets)
+
 
 # ------------------------------
 # Add the `unitTests` executable
@@ -55,4 +59,4 @@ add_executable(
     ${GENESIS_CPP_FILES}
     ${GENESIS_TEST_FILES}
 )
-target_link_libraries(unitTests ${GTEST_LIBRARIES} pthread)
+target_link_libraries(unitTests ${GTEST_LIBRARIES} pthread websockets)

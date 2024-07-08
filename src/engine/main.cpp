@@ -8,7 +8,10 @@ int speak() {
     LetThereBe(Genesis::App) genesis = ItCameToPass(Genesis::App);
 
     printf("Initializing...\n");
-    genesis->initialize();
+
+    // TODO: Get webSocket param from command line or config file
+    int webSocketPort = 7000;
+    genesis->initialize(webSocketPort);
 
     printf("Running...\n");
     genesis->run();

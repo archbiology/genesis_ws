@@ -25,7 +25,12 @@ class App {
     /**
      * Constructor.
      */
-    App(const std::string& param = "");
+    App();
+
+    /**
+     * @brief The port where the WebSocket server will listen
+     */
+    int webSocketPort;
 
     /**
      * @brief Genesis 1:1
@@ -83,8 +88,10 @@ class App {
 
     /**
      * Initializes the App.
+     *
+     * @param webSocketPort An integer specifying the WebSocket port.
      */
-    void initialize(const std::string& param = "");
+    void initialize(const int webSocketPort, const std::string& param = "");
 
     /**
      * Initializes all added services.
@@ -246,6 +253,7 @@ class App {
     std::vector<std::shared_ptr<Solver>> solvers;
 
    private:
+    bool initialized = false;
     bool running;
     bool tabstop;
     std::vector<std::shared_ptr<Service>> _services;
