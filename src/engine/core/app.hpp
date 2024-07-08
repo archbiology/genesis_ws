@@ -28,6 +28,11 @@ class App {
     App();
 
     /**
+     * @brief The port where the WebSocket server will listen
+     */
+    int webSocketPort;
+
+    /**
      * @brief Genesis 1:1
      * @details In the beginning, God created the heavens and the earth.
      */
@@ -83,8 +88,10 @@ class App {
 
     /**
      * Initializes the App.
+     *
+     * @param webSocketPort An integer specifying the WebSocket port.
      */
-    void initialize(const std::string& param = "");
+    void initialize(const int webSocketPort, const std::string& param = "");
 
     /**
      * Initializes all added services.

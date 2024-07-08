@@ -27,7 +27,7 @@ App::~App() {
     // Cleanup resources if needed
 }
 
-void App::initialize(const std::string& param) {
+void App::initialize(const int webSocketPort, const std::string& param) {
     // ----------------------------------------------
     // Let's initialize only once, to avoid problems.
     // ----------------------------------------------
@@ -84,6 +84,7 @@ void App::initialize(const std::string& param) {
     // _input = new Input(); // Example initialization
     // _servicesManager = new Services(); // Example initialization
 
+    this->webSocketPort = webSocketPort;
     running = false;
     tabstop = (param == "tabstop");
 

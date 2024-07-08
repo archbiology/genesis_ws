@@ -14,14 +14,12 @@ namespace Genesis {
  *
  * @param wsServer The WebSocket server instance to be started
  */
-auto startWsServer(std::shared_ptr<WebSocketServer> wsServer) {
-    // TODO: Get the port number as a argument, env var, config file, etc.
-    int wsServerPort = 8000;
-
+auto startWsServer(std::shared_ptr<WebSocketServer> wsServer,
+                   const int webSocketPort) {
     // --------------------------
     // Start the WebSocket Server
     // --------------------------
-    wsServer->start(wsServerPort);
+    wsServer->start(webSocketPort);
 }
 
 void WebSocketService::initialize(App* genesis) {
@@ -39,7 +37,8 @@ void WebSocketService::initialize(App* genesis) {
         //  https://iamsorush.com/posts/cpp-std-thread/
         //  https://stackoverflow.com/a/21978054/6490637
         // -------------------------------------------------------
-        std::thread wsThread(Genesis::startWsServer, wsServer);
+        std::thread wsThread(Genesis::startWsServer, wsServer,
+                             genesis->webSocketPort);
         wsThread.detach();
     }
 }
