@@ -1,5 +1,5 @@
 {
-  "name": "troisjs-app",
+  "name": "genesis-app",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

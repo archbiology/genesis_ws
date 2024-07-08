@@ -12,12 +12,34 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import WebSocketClient from './services/webSocketClient';
+
 import { Box, Camera, LambertMaterial, PointLight, Renderer, Scene } from 'troisjs'
 const rendererC = ref()
 const meshC = ref()
 onMounted(() => {
   const renderer = rendererC.value
   const mesh = meshC.value.mesh
+
+  const webSocket = new WebSocketClient();
+
+  webSocket.onConnect(() => {
+    console.log('onConnect: Connected to WebSocket server');
+
+    webSocket.sendMsg('Hello, server!');
+  });
+
+  webSocket.onMessage((msg) => {
+    console.log('onMessage: Received message:', msg);
+  });
+
+  webSocket.onClose(() => {
+    console.log('onClose: WebSocket connection closed');
+  });
+
+  const webSocketUrl = "ws://localhost:7000";
+  webSocket.connect(webSocketUrl);
+
   renderer.onBeforeRender(() => {
     mesh.rotation.x += 0.01
   })
